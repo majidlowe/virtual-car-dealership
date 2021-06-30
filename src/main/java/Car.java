@@ -46,4 +46,10 @@ public class Car {
     public void setAvailable(boolean available) {
         isAvailable = available;
     }
+
+    public void carInfo() {
+        System.out.print(this.getMake() + " ");
+        System.out.print(this.getModel() + " ");
+        System.out.println("$" + this.getPrice());
+    }
 }
