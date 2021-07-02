@@ -1,8 +1,8 @@
-## VIRTUAL CAR DEALERSHIP EXERCISE
+## Virtual Car Dealership
 
 In Java, we are going to implement a day at a virtual car dealership.  The dealership has one salesperson and as many cars as you feel like.  Throughout the day, the salesperson has 5 consecutive appointments to show (and hopefully sell) the cars.
 
-### USER STORIES
+### User Stories
 1. **Show the Cars**
    
     At the beginning of an appointment, the cars for sale should be "shown" by printing them to the console.  Show the car's make, model, and price. That should look something like this:
@@ -39,7 +39,7 @@ In Java, we are going to implement a day at a virtual car dealership.  The deale
     the salesperson boasts about how much commission they made.<br/><br/>
 
 
-## Advanced User Stories
+### Advanced User Stories
 
 1. **Only Show Cars Priced within a Customer's budget** 
    
