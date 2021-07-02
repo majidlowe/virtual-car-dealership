@@ -6,7 +6,7 @@ In Java, we are going to implement a day at a virtual car dealership.  The deale
 1. **Show the Cars**
    
     At the beginning of an appointment, the cars for sale should be "shown" by printing them to the console.  Show the car's make, model, and price. That should look something like this:
-    ```aidl
+    ```
     Chevy Volt $4000
     Honda Odyssey $11000
     Porsche 911 $200000
