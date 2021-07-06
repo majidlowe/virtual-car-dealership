@@ -8,9 +8,9 @@ public class Car {
 
    private boolean isAvailable;
 
-    public Car(String model, String make, Integer price) {
-        this.model = model;
+    public Car(String make, String model, Integer price) {
         this.make = make;
+        this.model = model;
         this.price = price;
         this.isAvailable = true;
     }
