@@ -24,7 +24,7 @@ public class Car {
         return price;
     }
 
-    public void showCar() {
+    public void showCarDetails() {
         System.out.print(this.getMake() + " ");
         System.out.print(this.getModel() + " ");
         System.out.println("$" + this.getPrice());
