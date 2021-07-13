@@ -6,6 +6,7 @@ import java.util.Scanner;
 public class Dealership {
     private List<Car> availableCars;
     private List<Car> soldInventory;
+    double totalCommission = 0;
 
     public Dealership() {
         this.availableCars = new ArrayList();
@@ -13,7 +14,7 @@ public class Dealership {
     }
 
     public void stockInventory() {
-        Car volt = new Car("Chevy", "Volt", 4017);
+        Car volt = new Car("Chevy", "Volt", 4000);
         Car porsche = new Car("Porsche", "911", 200000);
         Car sienna = new Car("Toyota", "Sienna", 30000);
 
@@ -23,20 +24,23 @@ public class Dealership {
     }
 
     public void runSalesAppointments() {
+        int commission;
+
         stockInventory();
 
         while(availableCars.size() > 0){
             appointmentTransaction();
         }
+
+        commission = calculateSalesCommission();
         System.out.println("Sorry no more cars!" );
-        int commission = calculateSalesCommission();
-        System.out.println("Commission: $" + commission);
+        System.out.println("WooWee!  Here's the sales commission: $" + commission);
 
     }
 
-    double totalCommission = 0;
     private int calculateSalesCommission() {
-        this.soldInventory.forEach(soldCar -> totalCommission += soldCar.getPrice() * .2);
+        double commissionPercentage = .2;
+        this.soldInventory.forEach(soldCar -> totalCommission += soldCar.getPrice() * commissionPercentage);
         return (int) totalCommission;
     }
 
@@ -58,9 +62,45 @@ public class Dealership {
         this.soldInventory.forEach(soldCar -> soldCar.showCarDetails());
     }
 
+    private void selectCarsByBudget(){
+        System.out.println("Awesome! Let me know what your budget is...");
+
+        Scanner scanner = new Scanner(System.in);
+        String userBudget = scanner.nextLine();
+
+        calculateBudget(Integer.parseInt(userBudget));
+    }
+
+    private void calculateBudget(int userBudget){
+        if(userBudget < 4000 ){
+            System.out.println("Sorry, nothing available for that price budget");
+        } else if(userBudget >= 4000 && userBudget <= 29999){
+            System.out.println("Volt");
+        } else if(userBudget >= 30000 && userBudget <= 199999){
+            System.out.println("Toyota | Volt");
+        } else if(userBudget > 200000 ){
+            System.out.println("Porsche | Toyota | Volt");
+        } else{
+            System.out.println("Something went wrong ...");
+        }
+    }
+
     private void greetCustomerAndShowInventory(){
-        System.out.println("Salesperson: Welcome to the dealership!  \n\nWhich car would you like to purchase?");
-        showAvailableCars();
+        System.out.println("Salesperson: Welcome to the Syed's Dealership!  \n\nWould you like to view by MAKE or BUDGET?");
+
+        Scanner scanner = new Scanner(System.in);
+        String userShoppingOptions = scanner.nextLine();
+
+        //if customer wants to select by MAKE then run showAvailableCars();
+        if(userShoppingOptions.equals("MAKE")){
+            showAvailableCars();
+        }
+
+        //if customer wants to select by BUDGET then run selectCarsByBudget();
+        if(userShoppingOptions.equals("BUDGET")){
+            selectCarsByBudget();
+        }
+
         System.out.println("Don't see what you like?  Type Q to decline.");
     }
 
