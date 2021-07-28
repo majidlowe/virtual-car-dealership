@@ -18,8 +18,9 @@ public class CarService {
         return (List<Car>) carRepo.findAll();
     }
 
-    public boolean deleteCarFromInventory(long id) {
+    public boolean purchaseCar(long id) {
         carRepo.deleteById(id);
         return true;
+
     }
 }

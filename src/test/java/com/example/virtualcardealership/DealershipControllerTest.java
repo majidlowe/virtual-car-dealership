@@ -1,6 +1,7 @@
 package com.example.virtualcardealership;
 
 import com.example.virtualcardealership.CarService;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -34,7 +35,7 @@ public class DealershipControllerTest {
 
 
     @Test
-    public void testGetAll() throws Exception {
+    public void testShowAll() throws Exception {
         Car myCar = new Car(1,"Chevy","Cruze",20000);
         List<Car> carList= new ArrayList<>();
         carList.add(myCar);
@@ -49,16 +50,18 @@ public class DealershipControllerTest {
                 .andExpect(jsonPath("$[0].model", is("Cruze")));
     }
     @Test
-    public void testDeleteById() throws Exception {
-        when(carService.deleteCarFromInventory(1)).thenReturn(true);
+    public void testPurchaseOfCarById() throws Exception {
+        when(carService.purchaseCar(1)).thenReturn(true);
 
-        MockHttpServletRequestBuilder deleteCarFromInventory = delete("/cars/1")
-                .contentType(MediaType.APPLICATION_JSON);
+        SalesRequest salesRequest = new SalesRequest(1, 1);
 
-        this.mvc.perform(deleteCarFromInventory).andExpect(status().isOk()).andExpect(content().string("true"));
+        String srAsString = new ObjectMapper().writeValueAsString(salesRequest);
 
+        MockHttpServletRequestBuilder performCarPurchase = patch("/cars/1")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(srAsString);
 
-
+        this.mvc.perform(performCarPurchase).andExpect(status().isOk()).andExpect(content().string("true"));
 
 
     }

@@ -16,9 +16,9 @@ public class CarController {
         return carService.getAllCars();
     }
 
-    @DeleteMapping("/{id}")
-    public boolean deleteCarById(@PathVariable long id){
-        return carService.deleteCarFromInventory(id);
+    @PatchMapping("/{id}")
+    public boolean purchaseCarById(@RequestBody SalesRequest salesRequest, @PathVariable long id){
+        return carService.purchaseCar(id);
     }
 
 }

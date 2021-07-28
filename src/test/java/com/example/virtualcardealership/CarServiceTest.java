@@ -17,7 +17,7 @@ import static org.mockito.Mockito.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 // Mock the repo, use the service layer
 @ExtendWith(MockitoExtension.class)
-public class DealershipServiceTest {
+public class CarServiceTest {
     @Mock
     CarRepo carRepo;
 
@@ -43,9 +43,13 @@ public class DealershipServiceTest {
 
     }
     @Test
-    public void deleteCarById(){
+    public void purchaseCarById(){
         CarService carService = new CarService(carRepo);
-        carService.deleteCarFromInventory(1);
+        carService.purchaseCar(1);
         verify(carRepo, times(1)).deleteById(1L);
+    }
+    @Test
+    public void updateSalesCommission(){
+
     }
 }
