@@ -3,6 +3,7 @@ package com.example.virtualcardealership;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class CarService {
@@ -10,7 +11,7 @@ public class CarService {
 
 
     public CarService(CarRepo carRepo){
-    Car savedCar = new Car(1,"Chevy", "Cruze", 20000);
+    Car savedCar = new Car(1,"Chevy", "Cruze", 20000, false);
         this.carRepo = carRepo;
         carRepo.save(savedCar);
     }
@@ -19,8 +20,15 @@ public class CarService {
     }
 
     public boolean purchaseCar(long id) {
+        Optional<Car> newSavedCar = carRepo.findById(1L);
         carRepo.deleteById(id);
-        return true;
+        if(newSavedCar.isPresent()) {
+            Car soldCar = newSavedCar.get();
+            soldCar.setSold(true);
+            return true;
+        }
+        return false;
+
 
     }
 }

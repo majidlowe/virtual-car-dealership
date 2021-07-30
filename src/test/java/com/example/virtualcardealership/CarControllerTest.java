@@ -24,7 +24,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @SpringBootTest
 @AutoConfigureMockMvc
-public class DealershipControllerTest {
+public class CarControllerTest {
 
     @Autowired
     MockMvc mvc;
@@ -36,7 +36,7 @@ public class DealershipControllerTest {
 
     @Test
     public void testShowAll() throws Exception {
-        Car myCar = new Car(1,"Chevy","Cruze",20000);
+        Car myCar = new Car(1,"Chevy","Cruze",20000, false);
         List<Car> carList= new ArrayList<>();
         carList.add(myCar);
 

@@ -19,6 +19,6 @@ public class Car {
     private String make;
     private String model;
     private long price;
-//    boolean isSold = false;
+    boolean isSold = false;
 
 }

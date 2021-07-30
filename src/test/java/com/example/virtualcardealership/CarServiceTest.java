@@ -28,7 +28,7 @@ public class CarServiceTest {
 
     @Test
     public void getAllTest(){
-        Car myCar = new Car(1,"Chevy","Cruze",20000);
+        Car myCar = new Car(1,"Chevy","Cruze",20000, false);
         List myCarList = new ArrayList();
         myCarList.add(myCar);
 
