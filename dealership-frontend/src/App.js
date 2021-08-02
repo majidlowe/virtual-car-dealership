@@ -1,25 +1,29 @@
-import logo from './logo.svg';
+import React, {useState} from "react";
+import Dealership from "./Dealership";
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+
+
+const App = (props) => {
+
+    const [carMake, setCarMake] = useState();
+    const [carModel, setCarModel] = useState();
+    const [carPrice, setCarPrice] = useState();
+    const [carIsSold, setCarIsSold] = useState();
+
+    return (
+        <div className="App">
+            <h1>SFC(ret.) JONES' CAR DEALERSHIP</h1>
+            <Dealership
+                carMake={props.carMake}
+                carModel={props.carModel}
+                carPrice={props.carPrice}
+                carIsSold={props.carIsSold}
+
+            />
+        </div>
+    );
 }
 
 export default App;
