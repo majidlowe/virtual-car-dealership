@@ -9,4 +9,9 @@ import java.util.List;
 @Repository
 public interface CarRepo extends CrudRepository<Car, Long> {
 
+    Iterable<Car>findCarsBySoldIs(boolean soldCar);
+
+
+
+
 }

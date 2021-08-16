@@ -1,4 +1,5 @@
 import { render, screen } from '@testing-library/react';
+import userEvent from "@testing-library/user-event";
 import App from './App';
 
 
@@ -12,7 +13,13 @@ describe('the front page of a car lot application', function() {
   it('makes a car hidden from customer view', () => {
     render(<App/>)
     expect(screen.getByText(/cruze/i)).toBeInTheDocument();
-    expect(screen.getByRole('heading', {name: /chevy/})
+
+    userEvent.click(
+        screen.getAllByRole('button', {
+          name: /buy me!/i
+        })[0]
+    )
+    expect(screen.queryByText(/cruze/i)).not.toBeInTheDocument();
 
   });
 })

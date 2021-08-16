@@ -47,6 +47,7 @@ public class CarServiceTest {
         CarService carService = new CarService(carRepo);
         carService.purchaseCar(1);
         verify(carRepo, times(1)).deleteById(1L);
+
     }
     @Test
     public void updateSalesCommission(){

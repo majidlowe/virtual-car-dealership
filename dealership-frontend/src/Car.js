@@ -1,17 +1,17 @@
-import React from "react";
+import React, {useState} from "react";
 
 
-const Car = (props) => {
+export default  ({carId,carMake,carModel,carPrice,carIsSold}) =>
+{
 
-    return (
-
-        <div>
-            <h3>{props.listOfCars}</h3>
-
-        </div>
-
-
-
-    );
+const  [_carIsSold, setCarIsSold] = useState(carIsSold);
+return  !_carIsSold &&  <h3> {carMake} {carModel} {carPrice} <button onClick={()=>setCarIsSold(true)}>Buy Me!</button></h3>
 }
-export default Car;
+
+
+
+
+
+
+
+
