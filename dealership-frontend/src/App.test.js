@@ -1,8 +1,18 @@
 import { render, screen } from '@testing-library/react';
 import App from './App';
 
-test('renders learn react link', () => {
-  render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
-});
+
+
+describe('the front page of a car lot application', function() {
+  it('renders list of cars', () => {
+    render(<App/>)
+    expect(screen.getByText(/cruze/i)).toBeInTheDocument();
+
+  });
+  it('makes a car hidden from customer view', () => {
+    render(<App/>)
+    expect(screen.getByText(/cruze/i)).toBeInTheDocument();
+    expect(screen.getByRole('heading', {name: /chevy/})
+
+  });
+})

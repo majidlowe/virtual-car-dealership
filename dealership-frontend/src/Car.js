@@ -1,11 +1,17 @@
 import React from "react";
-import Cars from "./Cars";
-
-const Car = () => (
-    <div>
-        <Cars/>
-    </div>
 
 
-);
+const Car = (props) => {
+
+    return (
+
+        <div>
+            <h3>{props.listOfCars}</h3>
+
+        </div>
+
+
+
+    );
+}
 export default Car;

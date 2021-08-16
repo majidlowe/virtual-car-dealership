@@ -1,15 +1,12 @@
 import React from "react";
-import Car from "./Car";
+import Cars from "./Cars";
 
 
-const Dealership = () => (
+const Dealership = () => {
+    return (
+        <Cars/>
 
 
-    <div>
-        <h3>test</h3>
-        <Car/>
-
-    </div>
-
-);
+    );
+}
 export default Dealership;
