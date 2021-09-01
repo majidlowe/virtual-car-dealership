@@ -1,0 +1,12 @@
+version: "3.8"
+services:
+  postgres-db:
+    container_name: tesseract-postgres
+    image: "postgres" # use latest official postgres version
+    restart: always
+    environment:
+      POSTGRES_USER: tesseract_dev
+      POSTGRES_PASSWORD: tesseract_dev
+      POSTGRES_DB: tesseract_dev
+    ports:
+      - "5432:5432"
